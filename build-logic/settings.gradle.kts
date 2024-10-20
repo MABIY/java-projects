@@ -5,5 +5,8 @@ dependencyResolutionManagement {
     }
 }
 
+//todo_lh share ../gradle/libs.versions.toml config
+
+
 rootProject.name = "build-logic"
 
