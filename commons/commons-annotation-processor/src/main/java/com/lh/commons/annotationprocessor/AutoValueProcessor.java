@@ -11,10 +11,7 @@ import lombok.Data;
 
 import javax.annotation.processing.Processor;
 import javax.annotation.processing.RoundEnvironment;
-import javax.lang.model.element.Element;
-import javax.lang.model.element.Modifier;
-import javax.lang.model.element.TypeElement;
-import javax.lang.model.element.VariableElement;
+import javax.lang.model.element.*;
 import javax.lang.model.type.MirroredTypesException;
 import javax.lang.model.type.TypeMirror;
 import java.util.*;
@@ -22,14 +19,28 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static com.lh.commons.annotationprocessor.utils.StringUtils.uppercaseFirstLetter;
+import static javax.lang.model.element.ElementKind.CONSTRUCTOR;
 
 
 @AutoService(Processor.class)
 public class AutoValueProcessor extends BaseProcessor {
-    private static void extracted(MethodSpec.Builder createMethodBuilder, FieldSpec fieldSpec) {
-        createMethodBuilder.addStatement(
+    private static void addEntitySetStatement(MethodSpec.Builder methodBuilder, FieldSpec fieldSpec) {
+        methodBuilder.addStatement(
                 "entity.set" + uppercaseFirstLetter(fieldSpec.name) + "(" + fieldSpec.name + ")");
     }
+
+    private static void addDtoSetStatement(MethodSpec.Builder methodBuilder, FieldSpec fieldSpec) {
+        methodBuilder.addStatement(
+                "dto.set" + uppercaseFirstLetter(fieldSpec.name) + "(" + fieldSpec.name + ")");
+    }
+
+    private static Set<ExecutableElement> getConstructors(TypeElement element){
+        return (Set<ExecutableElement>) element.getEnclosedElements().stream().filter(item-> item.getKind()==CONSTRUCTOR).collect(Collectors.toSet());
+    }
+
+    private static boolean hasNoArgConstructor(TypeElement element){
+        return getConstructors(element).stream().anyMatch(executableElement -> executableElement.getParameters().isEmpty());
+}
 
     private FieldSpec convert(TypeElementField typeElementField) {
         VariableElement variableElement = typeElementField.variableElement;
@@ -83,9 +94,11 @@ public class AutoValueProcessor extends BaseProcessor {
                 .collect(Collectors.groupingBy(
                         generatedField -> typeElement.getEnclosingElement() + ".value." + typeElement.getSimpleName()
                                 + StringUtils.getLastDelimiterValue(generatedField.getGroupName(), '.')));
+        ClassName originalClassName = ClassName.get(typeElement);
         for (String classQualifedNameString : classAndAllGenertedFieldsMap.keySet()) {
             ClassName classQualifiedName = ClassName.bestGuess(classQualifedNameString);
             createJavaFile(
+                    originalClassName,
                     classQualifiedName.packageName(),
                     classQualifiedName.simpleName(),
                     typeVariableNamesOfOrgianTypeElement,
@@ -126,7 +139,7 @@ public class AutoValueProcessor extends BaseProcessor {
                     String canonicalClassName = annotationSpec.type.toString();
                     return !canonicalClassName.startsWith("javax.persistence.")
                             && !canonicalClassName.startsWith("lombok.")
-                            && !canonicalClassName.startsWith("com.lh.annotation.")
+                            && !canonicalClassName.startsWith("com.lh.commons.annotation.")
                             && !canonicalClassName.startsWith("jakarta.persistence.")
                             && !canonicalClassName.startsWith("com.yunmo.generator.annotation.")
                             && !canonicalClassName.startsWith("org.hibernate.annotations.")
@@ -136,7 +149,7 @@ public class AutoValueProcessor extends BaseProcessor {
     }
 
     private void createJavaFile(
-            String packageName,
+            ClassName originalClassName, String packageName,
             String classSimpleName,
             List<TypeVariableName> typeVariableNames,
             List<AnnotationSpec> classAnnotationSpecs,
@@ -153,44 +166,57 @@ public class AutoValueProcessor extends BaseProcessor {
 
         fieldSpecs.forEach(classBuilder::addField);
 
-        MethodSpec.Builder createMethodBuilder = MethodSpec.methodBuilder("create")
-                .addModifiers(Modifier.PUBLIC)
-                .returns(className)
-                .addStatement("$T entity = new $T()", className, className);
-        for (FieldSpec fieldSpec : fieldSpecs) {
-            extracted(createMethodBuilder, fieldSpec);
-        }
-        createMethodBuilder.addStatement("return entity");
-        classBuilder.addMethod(createMethodBuilder.build());
+        boolean originClassHasNoArgConstructor = hasNoArgConstructor(elements.getTypeElement(originalClassName.canonicalName()));
 
-        MethodSpec.Builder assignMethodBuilder = MethodSpec.methodBuilder("assign")
+        if(originClassHasNoArgConstructor){
+            MethodSpec.Builder createMethodBuilder = MethodSpec.methodBuilder("create")
+                    .addModifiers(Modifier.PUBLIC)
+                    .returns(originalClassName)
+                    .addStatement("$T entity = new $T()", originalClassName, originalClassName);
+            for (FieldSpec fieldSpec : fieldSpecs) {
+                addEntitySetStatement(createMethodBuilder, fieldSpec);
+            }
+            createMethodBuilder.addStatement("return entity");
+            classBuilder.addMethod(createMethodBuilder.build());
+        }
+
+        MethodSpec.Builder assignMethodBuilder = MethodSpec.methodBuilder("assignTo")
                 .addModifiers(Modifier.PUBLIC)
-                .returns(className)
-                .addParameter(className, "entity");
+                .returns(originalClassName)
+                .addParameter(originalClassName, "entity");
         for (FieldSpec fieldSpec : fieldSpecs) {
-            assignMethodBuilder.addStatement(
-                    "entity.set" + uppercaseFirstLetter(fieldSpec.name) + "(" + fieldSpec.name + ")");
+            addEntitySetStatement(assignMethodBuilder,fieldSpec);
         }
         assignMethodBuilder.addStatement("return entity");
         classBuilder.addMethod(assignMethodBuilder.build());
 
-        MethodSpec.Builder patchMethodBuilder = MethodSpec.methodBuilder("patch")
+        MethodSpec.Builder patchMethodBuilder = MethodSpec.methodBuilder("patchTo")
                 .addModifiers(Modifier.PUBLIC)
-                .returns(className)
-                .addParameter(className, "entity");
+                .returns(originalClassName)
+                .addParameter(originalClassName, "entity");
         for (FieldSpec fieldSpec : fieldSpecs) {
             if (fieldSpec.type.isPrimitive()) {
-                patchMethodBuilder.addStatement(
-                        "entity.set" + uppercaseFirstLetter(fieldSpec.name) + "(" + fieldSpec.name + ")");
+                addEntitySetStatement(patchMethodBuilder,fieldSpec);
             } else {
                 patchMethodBuilder.beginControlFlow("if (" + fieldSpec.name + " != null )");
-                patchMethodBuilder.addStatement(
-                        "entity.set" + uppercaseFirstLetter(fieldSpec.name) + "(" + fieldSpec.name + ")");
+                addEntitySetStatement(patchMethodBuilder,fieldSpec);
                 patchMethodBuilder.endControlFlow();
             }
         }
         patchMethodBuilder.addStatement("return entity");
         classBuilder.addMethod(patchMethodBuilder.build());
+
+        MethodSpec.Builder fromMethodBuilder = MethodSpec.methodBuilder("from")
+                .addModifiers(Modifier.PUBLIC)
+                .returns(className)
+                .addParameter(originalClassName, "entity")
+                .addStatement("$T dto = new $T()", className, className);
+
+        for (FieldSpec fieldSpec : fieldSpecs) {
+            addDtoSetStatement(fromMethodBuilder, fieldSpec);
+        }
+        fromMethodBuilder.addStatement("return dto");
+        classBuilder.addMethod(fromMethodBuilder.build());
         JavaFile javaFile = JavaFile.builder(packageName, classBuilder.build()).build();
         writeJavaFile(packageName, classSimpleName, javaFile);
     }
