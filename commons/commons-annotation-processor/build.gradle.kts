@@ -3,13 +3,21 @@ plugins {
     id("maven-publish")
 }
 
+group="com.lh.commons"
+
 
 publishing {
     repositories {
         maven {
-            val releasesRepoUrl = uri("")
-            val snapshotsRepoUrl = uri("")
+            isAllowInsecureProtocol=true
+            val releasesRepoUrl = uri("http://192.168.0.109:8081/repository/maven-releases/")
+            val snapshotsRepoUrl = uri("http://192.168.0.109:8081/repository/maven-snapshots/")
             url = uri(if (version.toString().endsWith("SNAPSHOT")) snapshotsRepoUrl else releasesRepoUrl)
+            credentials{
+                username = "admin"
+                password = "admin123"
+
+            }
         }
     }
     publications {
