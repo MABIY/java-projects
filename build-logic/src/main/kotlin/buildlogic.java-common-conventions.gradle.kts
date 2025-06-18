@@ -41,6 +41,10 @@ java {
     }
 }
 
+tasks.withType<JavaCompile>().configureEach {
+    options.release = 17
+}
+
 tasks.named<Test>("test") {
     // Use JUnit Platform for unit tests.
     useJUnitPlatform()
