@@ -8,11 +8,3 @@ plugins {
 
 group = "com.lh.think-in-java"
 version = libs.versions.project.version.get()
-
-repositories {
-    maven {
-        url = uri("https://maven.aliyun.com/repository/public")
-    }
-
-    mavenCentral()
-}
