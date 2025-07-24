@@ -12,6 +12,9 @@ plugins {
 val libs = extensions.getByType(VersionCatalogsExtension::class.java).named("libs")
 
 dependencies{
+    implementation(platform(libs.findLibrary("junit-bom").get()))
+    implementation(libs.findLibrary("junit-jupiter").get())
+    runtimeOnly(libs.findLibrary("junit-platform").get())
 
     // Use JUnit Jupiter for testing.
     testImplementation(platform(libs.findLibrary("junit-bom").get()))
