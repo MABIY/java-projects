@@ -3,6 +3,9 @@ plugins {
     id("buildlogic.java-library-conventions")
 }
 
+dependencies{
+    implementation(fileTree("libs") { include("*.jar")})
+}
 
 // end::app_dependencies[]
 
