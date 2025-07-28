@@ -29,12 +29,10 @@ public class BinaryTest_p03_10 {
         int value;
         {
 //            Java 中的移位行为（关键点）
-//            在 Java 中，如果你写：
-//
-//            java
-//                    Copy
-//            Edit
+
 //            int result = value << N;
+//            int result = value >> N;
+//            int result = value >>> N;
 //            那么：
 //
 //            实际的移位位数为：N & 0x1F（也就是 N % 32）
