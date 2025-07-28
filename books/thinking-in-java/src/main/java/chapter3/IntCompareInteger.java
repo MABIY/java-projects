@@ -8,9 +8,9 @@ public class IntCompareInteger {
         int a =1291;
         Integer aIntegere = new Integer(1291);
         if (a == aIntegere) { // wrapperInt is unboxed to int
-            System.out.println("int 1 == new Integer(1)");
+            System.out.println("int 1291 == new Integer(1)");
         }else {
-            System.out.println("int 1 != new Integer(1)");
+            System.out.println("int 1291 != new Integer(1)");
         }
     }
 }
