@@ -14,21 +14,15 @@ pluginManagement {
 
 }
 
-plugins {
-    // Apply the foojay-resolver plugin to allow automatic download of JDKs
-    id("org.gradle.toolchains.foojay-resolver-convention") version "0.10.0"
+dependencyResolutionManagement {
+    versionCatalogs {
+        create("libs") {
+            from(files("../../gradle/libs.versions.toml"))
+        }
+    }
 }
 
-rootProject.name = "java-projects"
-//include("app")
 
-includeBuild("build-logic")
-includeBuild("books/thinking-in-java"){
-    name ="thinking-in-java"
-}
-includeBuild("practices/java-base"){
-    name ="java-base"
-}
-includeBuild("practices/mapstruct"){
-    name ="mapstruct"
-}
+rootProject.name = "mapstruct"
+
+includeBuild("../../build-logic")
