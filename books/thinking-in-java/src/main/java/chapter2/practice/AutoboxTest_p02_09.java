@@ -13,7 +13,7 @@ public class AutoboxTest_p02_09 {
         long l = 64;
         float f = 0.32f;
         double d = 0.64;
-        boolean B = b;
+        Boolean B = b;
         System.out.println("boolean b = " + b);
         System.out.println("boolean B = " + B);
         Character C = c;
