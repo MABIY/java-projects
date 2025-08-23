@@ -3,7 +3,7 @@ package chapter2.practice;
 /**
  * @author lh
  */
-public class AutoboxTest_p2_09 {
+public class AutoboxTest_p02_09 {
     public static void main(String[] args) {
         boolean b = false;
         char c = 'x';
