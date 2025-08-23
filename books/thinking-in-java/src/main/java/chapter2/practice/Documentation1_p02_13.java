@@ -4,10 +4,9 @@ package chapter2.practice;
 /* Run Documentation1.java, Documentation2.java and Documentation3.java
  * through Javadoc. Verify the resulting documentation with you web browser.
  */
-import java.util.*;
 
 /** A class comment */
-public class Documentation1_p2_13 {
+public class Documentation1_p02_13 {
     /** A field comment */
     public int i;
 

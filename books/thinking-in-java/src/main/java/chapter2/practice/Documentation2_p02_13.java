@@ -12,7 +12,7 @@ import java.util.Date;
  *    System.out.println(new Date());
  * </pre>
  */
-public class Documentation2_p2_13 {
+public class Documentation2_p02_13 {
     Date d = new Date();
     void showDate() {
         System.out.println("Date = " + d);

@@ -3,7 +3,7 @@ package chapter2.practice;
 /**
  * @author lh
  */
-public class PrimitiveTest_p2_01 {
+public class PrimitiveTest_p02_01 {
     static int i;
     static char c;
 

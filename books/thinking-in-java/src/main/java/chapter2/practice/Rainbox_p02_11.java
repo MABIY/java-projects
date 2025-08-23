@@ -3,7 +3,7 @@ package chapter2.practice;
 /**
  * @author lh
  */
-public class Rainbox_p2_11 {
+public class Rainbox_p02_11 {
     public static void main(String[] args) {
         AllTheColorsOfTheRainbox atc = new AllTheColorsOfTheRainbox();
         System.out.println("atc.anIntegerRepresentingColors = " + atc.anIntegerRepresentingColors);

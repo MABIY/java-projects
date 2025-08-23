@@ -3,16 +3,16 @@ package chapter2.practice;
 * comment documentation example. Execute Javaodc on the file and view the
 * results with your Web browser.
  */
-import java.util.*;
 
-/* The first Thinking in java example program.
+/**
+ * The first Thinking in java example program.
  * Display a string and today's date.
  * @author Burce Eckel
  * @author www.MindView.net
  * @version 4.0
  *
  */
-public class DocTest_p2_12 {
+public class DocTest_p02_12 {
     /**
      * The entry point of application.
      *

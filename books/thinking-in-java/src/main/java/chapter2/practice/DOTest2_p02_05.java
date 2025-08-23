@@ -1,7 +1,7 @@
 package chapter2.practice;/**
  * @author lh
  */
-public class DOTest2_p2_05 {
+public class DOTest2_p02_05 {
     public static void main(String[] args) {
         class DataOnly{
             int i;

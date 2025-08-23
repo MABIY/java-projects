@@ -27,7 +27,7 @@ class Tree {
     }
 
     /**
-     * construcotr taking an int argument,
+     * constructor taking an int argument,
      * assigns height that int argument
      *
      * @param initialHeight the height
@@ -56,7 +56,7 @@ class Tree {
 /**
  * class to test construction of tree objects
  */
-public class Overloading_p2_16 {
+public class Overloading_p02_16 {
     public static void main(String[] args) {
         for (int i = 0; i < 5; i++) {
             Tree t = new Tree(i);

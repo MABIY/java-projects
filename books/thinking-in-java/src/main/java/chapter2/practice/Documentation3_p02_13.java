@@ -17,7 +17,7 @@ import java.util.Date;
  *     <li> Item three</li>
  * </ol>
  */
-public class Documentation3_p2_13 {
+public class Documentation3_p02_13 {
     public static void main(String[] args) {
         Date d = new Date();
         System.out.println("d = " + d);
