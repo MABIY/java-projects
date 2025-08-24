@@ -9,7 +9,7 @@ import static net.mindview.util.Print.print;
  * different String objects.
  * @author lh
  */
-public class StringCompare_po3_14 {
+public class StringCompare_p03_14 {
     static void f(boolean b) {
         if (b == true) {
             print(true);

@@ -5,7 +5,7 @@ import static net.mindview.util.Print.print;
 /**
  * @author lh
  */
-public class CharBinaryTest_p3_13 {
+public class CharBinaryTest_p03_13 {
     public static void main(String[] args) {
         char c = 'a';
         print(Integer.toBinaryString(c));
@@ -20,7 +20,6 @@ public class CharBinaryTest_p3_13 {
         c = 'A';
         print(Integer.toBinaryString(c));
         for (int i = 0; i < 26; i++) {
-            c += 1;
             print(Integer.toBinaryString(c));
         }
     }

@@ -8,7 +8,7 @@ import static net.mindview.util.Print.print;
 class Box{
     float a;
 }
-public class PassObject2_p3_03 {
+public class PassObject2_p03_03 {
     static void f(Box y){
         y.a = 2.71828f;
     }

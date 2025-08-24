@@ -5,7 +5,7 @@ import static net.mindview.util.Print.print;
 /**
  * @author lh
  */
-public class DogCompare_p3_05 {
+public class DogCompare_p03_06 {
     public static void main(String[] args) {
         Dog spot = new Dog();
         spot.setName("Spot");

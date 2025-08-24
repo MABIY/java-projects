@@ -9,7 +9,7 @@ class VelocityCalculator{
        else return d / t;
    }
 }
-public class VelocityTester_p3_o4 {
+public class VelocityTester_p03_04 {
     public static void main(String[] args) {
         float d = 565.3f;
         float t = 3.6f;
