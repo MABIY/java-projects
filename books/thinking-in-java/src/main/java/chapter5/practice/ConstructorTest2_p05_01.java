@@ -16,7 +16,7 @@ class Tester2{
 /**
  * @author liu.hua
  */
-public class ConstructorTest2 {
+public class ConstructorTest2_p05_01 {
     public static void main(String[] args) {
         Tester2 t = new Tester2();
         System.out.println("t.s1:" + t.s1);

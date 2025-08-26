@@ -9,7 +9,7 @@ package chapter5.practice;
 class Tester {
     String s;
 }
-public class ConstructorTest {
+public class ConstructorTest_p05_01 {
     public static void main(String[] args) {
         Tester t = new Tester();
         System.out.println(t.s);
