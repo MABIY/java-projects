@@ -7,9 +7,11 @@ import static chapter5.practice.self.JvmRuntimeInfo.bytesToMb;
  */
 class WebBank{
     boolean loggedIn = false;
+    private  int a = 0;
 
-    WebBank(boolean logStatus){
+    WebBank(boolean logStatus,int a ){
         loggedIn = logStatus;
+        this.a = a;
     }
 
     void logIn(){
@@ -22,21 +24,21 @@ class WebBank{
     @Override
     protected void finalize() {
        if(loggedIn) {
-           System.err.println("Error: still logged in");
+           System.err.println(a + "-> Error: still logged in");
        }
     }
 }
 /**
  * @author liu.hua
  */
-public class TerminationConditionEx {
+public class TerminationConditionEx_p05_11 {
     public static void main(String[] args) {
-        WebBank bank1 = new WebBank(true);
-        WebBank bank2 = new WebBank(true);
+        WebBank bank1 = new WebBank(true,0);
+        WebBank bank2 = new WebBank(true,1);
         // Proper cleanup: log out of bank1 before going home
-        bank1.logOut();
+//        bank1.logOut();
         // Drop the reference, forget to cleanup:
-        new WebBank(true);
+        new WebBank(true,2);
         Runtime runtime = Runtime.getRuntime();
         // Get total heap Memory allocated to the JVM in bytes
         long totalMemory = runtime.totalMemory();

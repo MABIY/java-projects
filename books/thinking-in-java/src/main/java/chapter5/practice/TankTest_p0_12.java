@@ -39,6 +39,7 @@ public class TankTest_p0_12 {
         Tank tank1 = new Tank();
         Tank tank2 = new Tank(3);
         Tank tank3 = new Tank(5);
+        Tank tank4 = new Tank(7);
         // Proper cleanup: empty tank before going home
         tank2.empty();
         // Drop the reference, forget to cleanup:
