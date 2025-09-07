@@ -1,0 +1,14 @@
+package chapter6.access;
+
+import chapter6.access.dessert.Cookie;
+
+/**
+ * @author liu.hua
+ */
+public class Dinner {
+    public static void main(String[] args){
+        Cookie x = new Cookie();
+        //! x.bite(); // Can't access
+    }
+}
+
