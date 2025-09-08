@@ -1,8 +1,5 @@
 package chapter6.access;
 
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
-
 /**
  * Demonstrates class access specifiers
  * @author liu.hua
@@ -17,11 +14,12 @@ class Soup1{
 }
 
 class Soup2{
-    private Soup2(){}
-
     //(2) create a static object and return a reference
     // upon request. (The "singleton" pattern)
-    private static Soup2 ps1 = new Soup2();
+    private static final Soup2 ps1 = new Soup2();
+
+    private Soup2(){}
+
     public static Soup2 access(){
         return ps1;
     }

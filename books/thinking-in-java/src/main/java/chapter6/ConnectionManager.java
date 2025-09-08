@@ -11,7 +11,8 @@ class Connection{
     private static int count = 0;
     private int i =0;
     private Connection(){
-        System.out.println("Connection");
+        i = count;
+        System.out.println("Connection: " +i);
     }
 
     //Allow creation via static method:
