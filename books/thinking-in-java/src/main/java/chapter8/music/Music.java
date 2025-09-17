@@ -9,7 +9,7 @@ public class Music {
         tune(flute);
     }
 
-    private static void tune(Wind flute) {
+    private static void tune(Instrument flute) {
         flute.play(Note.MIDDLE_C);
     }
 }
