@@ -71,6 +71,9 @@ class Tricycle5 extends  Cycle5 {
     }
 }
 
+/**
+ * @author lh
+ */
 public class Biking_p08_05 {
     public static void ride(Cycle5 c){
         c.travel(c);
@@ -80,7 +83,8 @@ public class Biking_p08_05 {
         Unicycle5 u = new Unicycle5();
         Bicycle5 b = new Bicycle5();
         Tricycle5 t = new Tricycle5();
-        ride(u); //upcast to Cycle
+        //upcast to Cycle
+        ride(u);
         ride(b);
         ride(t);
     }
