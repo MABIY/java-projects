@@ -44,3 +44,7 @@ public class Ex09_04 {
    }
 
 }
+
+interface A{
+    public static final String A = "ards";
+}
