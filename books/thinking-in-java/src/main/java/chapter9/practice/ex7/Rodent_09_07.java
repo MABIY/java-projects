@@ -1,4 +1,4 @@
-package chapter9.practice.ex9;
+package chapter9.practice.ex7;
 
 import java.util.Random;
 
