@@ -26,6 +26,9 @@ includeBuild("build-logic")
 includeBuild("books/thinking-in-java"){
     name ="thinking-in-java"
 }
+includeBuild("books/head-first-design-patterns"){
+    name ="head-first-design-patterns"
+}
 includeBuild("practices/java-base"){
     name ="java-base"
 }
