@@ -2,7 +2,7 @@ package factory.pizzas.test;
 
 import factory.pizzas.Pizza;
 import factory.pizzas.factory.SimplePizzaFactory;
-import factory.pizzas.strores.PizzaStore;
+import factory.pizzas.store.PizzaStore;
 
 /**
  * @author lh
