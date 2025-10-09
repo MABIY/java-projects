@@ -7,7 +7,7 @@ import static net.mindview.util.Print.print;
 
 /**
  * Modify  Music5.java by adding a playable interface. Move the play() declaration
- * form Instrument to Playable. Add Playable to hte derived classes by including
+ * form Instrument to Playable. Add Playable to the derived classes by including
  * it in the implement list. Change tune() so that it takes a Playable instead of and
  * Instrument.
  * @author lh
