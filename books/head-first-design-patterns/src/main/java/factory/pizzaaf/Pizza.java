@@ -3,7 +3,7 @@ package factory.pizzaaf;
 import factory.pizzaaf.ingredients.cheese.Cheese;
 import factory.pizzaaf.ingredients.clam.Clam;
 import factory.pizzaaf.ingredients.dough.Dough;
-import factory.pizzaaf.factories.ingredientfactory.PIzzaIngredientFactory;
+import factory.pizzaaf.factories.ingredientfactories.PIzzaIngredientFactory;
 import factory.pizzaaf.ingredients.pepperoni.Pepperoni;
 import factory.pizzaaf.ingredients.sauce.Sauce;
 import factory.pizzaaf.ingredients.veggie.Veggie;

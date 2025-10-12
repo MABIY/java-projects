@@ -1,7 +1,7 @@
 package factory.pizzaaf.impl;
 
 import factory.pizzaaf.Pizza;
-import factory.pizzaaf.factories.ingredientfactory.PIzzaIngredientFactory;
+import factory.pizzaaf.factories.ingredientfactories.PIzzaIngredientFactory;
 
 /**
  * @author lh

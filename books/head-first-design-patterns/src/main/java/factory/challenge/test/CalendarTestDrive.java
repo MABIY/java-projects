@@ -1,8 +1,8 @@
 package factory.challenge.test;
 
-import factory.challenge.calendar.Calendar;
-import factory.challenge.calendar.impl.PacificCalendar;
-import factory.challenge.zone.factory.ZoneFactory;
+import factory.challenge.calendars.Calendar;
+import factory.challenge.calendars.impl.PacificCalendar;
+import factory.challenge.zones.factory.ZoneFactory;
 
 import java.util.Arrays;
 import java.util.List;

@@ -1,9 +1,9 @@
 package factory.pizzaaf.test;
 
 import factory.pizzaaf.Pizza;
-import factory.pizzaaf.store.PizzaStore;
-import factory.pizzaaf.store.impl.ChicagoPizzaStore;
-import factory.pizzaaf.store.impl.NYPizzaStore;
+import factory.pizzaaf.stores.PizzaStore;
+import factory.pizzaaf.stores.impl.ChicagoPizzaStore;
+import factory.pizzaaf.stores.impl.NYPizzaStore;
 
 /**
  * @author lh
