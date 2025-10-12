@@ -2,7 +2,7 @@ package factory.challenge.test;
 
 import factory.challenge.calendars.Calendar;
 import factory.challenge.calendars.impl.PacificCalendar;
-import factory.challenge.zones.factory.ZoneFactory;
+import factory.challenge.zone.factory.ZoneFactory;
 
 import java.util.Arrays;
 import java.util.List;

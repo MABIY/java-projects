@@ -1,9 +1,9 @@
 package factory.pizzafm.test;
 
 import factory.pizzafm.Pizza;
-import factory.pizzafm.stores.PizzaStore;
-import factory.pizzafm.stores.chicago.ChicagoPizzaStore;
-import factory.pizzafm.stores.ny.NYPizzaStore;
+import factory.pizzafm.store.PizzaStore;
+import factory.pizzafm.store.impl.chicago.ChicagoPizzaStore;
+import factory.pizzafm.store.impl.ny.NYPizzaStore;
 
 /**
  * @author lh

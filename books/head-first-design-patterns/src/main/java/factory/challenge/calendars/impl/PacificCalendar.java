@@ -1,7 +1,7 @@
 package factory.challenge.calendars.impl;
 
 import factory.challenge.calendars.Calendar;
-import factory.challenge.zones.factory.ZoneFactory;
+import factory.challenge.zone.factory.ZoneFactory;
 
 import java.util.List;
 

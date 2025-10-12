@@ -1,14 +1,14 @@
 package factory.pizzafm.scatter;
 
 import factory.pizzafm.Pizza;
-import factory.pizzafm.stores.chicago.products.ChicagoStyleCheesePizza;
-import factory.pizzafm.stores.chicago.products.ChicagoStyleClamPizza;
-import factory.pizzafm.stores.chicago.products.ChicagoStylePepperoniPizza;
-import factory.pizzafm.stores.chicago.products.ChicagoStyleVeggiePizza;
-import factory.pizzafm.stores.ny.products.NYStyleCheesePizza;
-import factory.pizzafm.stores.ny.products.NYStyleClamPizza;
-import factory.pizzafm.stores.ny.products.NYStylePepperoniPizza;
-import factory.pizzafm.stores.ny.products.NYStyleVeggiePizza;
+import factory.pizzafm.store.impl.chicago.products.ChicagoStyleCheesePizza;
+import factory.pizzafm.store.impl.chicago.products.ChicagoStyleClamPizza;
+import factory.pizzafm.store.impl.chicago.products.ChicagoStylePepperoniPizza;
+import factory.pizzafm.store.impl.chicago.products.ChicagoStyleVeggiePizza;
+import factory.pizzafm.store.impl.ny.products.NYStyleCheesePizza;
+import factory.pizzafm.store.impl.ny.products.NYStyleClamPizza;
+import factory.pizzafm.store.impl.ny.products.NYStylePepperoniPizza;
+import factory.pizzafm.store.impl.ny.products.NYStyleVeggiePizza;
 
 /**
  * @author lh

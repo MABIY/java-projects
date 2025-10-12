@@ -1,6 +1,6 @@
 package factory.challenge.calendars;
 
-import factory.challenge.zones.Zone;
+import factory.challenge.zone.Zone;
 
 import java.util.List;
 
