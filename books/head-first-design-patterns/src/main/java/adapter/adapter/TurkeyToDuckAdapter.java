@@ -1,4 +1,4 @@
-package adapter.turkeys.adapter;
+package adapter.adapter;
 
 import adapter.ducks.Duck;
 import adapter.turkeys.Turkey;
@@ -6,10 +6,10 @@ import adapter.turkeys.Turkey;
 /**
  * @author lh
  */
-public class TurkeyAdapter implements Duck {
+public class TurkeyToDuckAdapter implements Duck {
     private Turkey turkey;
 
-    public TurkeyAdapter(Turkey turkey) {
+    public TurkeyToDuckAdapter(Turkey turkey) {
         this.turkey = turkey;
     }
 
