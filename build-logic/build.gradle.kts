@@ -16,6 +16,11 @@ repositories {
     gradlePluginPortal()
 }
 
+java{
+    toolchain{
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
 
 dependencies{
 }
