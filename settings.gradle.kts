@@ -5,3 +5,9 @@ pluginManagement {
 }
 
 includeBuild("commons")
+
+
+includeBuild("practice/reactive")
+
+include(":practice:reactive")
+project(":practice:reactive").name="reactive"
