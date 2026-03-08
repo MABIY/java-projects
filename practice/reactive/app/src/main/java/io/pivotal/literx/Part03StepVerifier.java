@@ -17,8 +17,6 @@
 package io.pivotal.literx;
 
 import io.pivotal.literx.domain.User;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
 import org.assertj.core.api.Assertions;
 import reactor.core.publisher.Flux;
 import reactor.test.StepVerifier;
