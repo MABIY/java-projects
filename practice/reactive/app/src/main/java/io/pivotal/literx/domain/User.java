@@ -1,5 +1,16 @@
 package io.pivotal.literx.domain;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+
+/**
+ * @author lh
+ */
+@Getter
+@Builder
+@AllArgsConstructor
 public class User {
 
 	public static final User SKYLER = new User("swhite", "Skyler", "White");
@@ -13,25 +24,7 @@ public class User {
 
 	private final String lastname;
 
-	public User(String username, String firstname, String lastname) {
-		this.username = username;
-		this.firstname = firstname;
-		this.lastname = lastname;
-	}
-
-	public String getUsername() {
-		return username;
-	}
-
-	public String getFirstname() {
-		return firstname;
-	}
-
-	public String getLastname() {
-		return lastname;
-	}
-
-	@Override
+    @Override
 	public boolean equals(Object o) {
 		if (this == o) {
 			return true;

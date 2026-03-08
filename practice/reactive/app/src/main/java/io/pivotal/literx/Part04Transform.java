@@ -3,6 +3,8 @@ package io.pivotal.literx;
 import java.time.Duration;
 import java.util.List;
 import java.util.function.Supplier;
+
+import io.pivotal.literx.domain.User;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -89,14 +91,5 @@ public class Part04Transform {
                     .username(user.getUsername().toUpperCase())
                     .lastname(user.getLastname().toUpperCase())
                     .build()));
-  }
-
-  @Getter
-  @Builder
-  @EqualsAndHashCode
-  private static class User {
-    private String username;
-    private String firstname;
-    private String lastname;
   }
 }
