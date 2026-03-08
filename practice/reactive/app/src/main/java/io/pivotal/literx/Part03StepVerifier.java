@@ -55,7 +55,7 @@ public class Part03StepVerifier {
 
     // TODO Expect 10 elements then complete and notice how long the test takes.
     void expect10Elements(Flux<Long> flux) {
-        StepVerifier.create(flux).expectNextCount(10).verifyComplete();
+        StepVerifier.create(flux).expectSubscription().expectNextCount(10).verifyComplete();
     }
 
 //========================================================================================
