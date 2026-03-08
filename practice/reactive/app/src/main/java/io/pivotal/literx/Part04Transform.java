@@ -1,13 +1,9 @@
 package io.pivotal.literx;
 
+import io.pivotal.literx.domain.User;
 import java.time.Duration;
 import java.util.List;
 import java.util.function.Supplier;
-
-import io.pivotal.literx.domain.User;
-import lombok.Builder;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 import reactor.test.StepVerifier;
