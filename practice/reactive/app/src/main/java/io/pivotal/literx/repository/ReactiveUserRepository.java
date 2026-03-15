@@ -36,17 +36,6 @@ public class ReactiveUserRepository implements ReactiveRepository<User> {
 		this.users = new ArrayList<>(Arrays.asList(users));
 	}
 
-
-	@Override
-	public Mono<Void> save(Publisher<User> userPublisher) {
-		return withDelay(Flux.from(userPublisher)).doOnNext(users::add).then();
-	}
-
-	@Override
-	public Mono<User> findFirst() {
-		return withDelay(Mono.just(users.get(0)));
-	}
-
 	@Override
 	public Flux<User> findAll() {
 		return withDelay(Flux.fromIterable(users));
@@ -60,6 +49,15 @@ public class ReactiveUserRepository implements ReactiveRepository<User> {
 		return withDelay(Mono.just(user));
 	}
 
+	@Override
+	public Mono<User> findFirst() {
+		return withDelay(Mono.just(users.get(0)));
+	}
+
+	@Override
+	public Mono<Void> save(Publisher<User> userPublisher) {
+		return withDelay(Flux.from(userPublisher)).doOnNext(users::add).then();
+	}
 
 	private Mono<User> withDelay(Mono<User> userMono) {
 		return Mono
